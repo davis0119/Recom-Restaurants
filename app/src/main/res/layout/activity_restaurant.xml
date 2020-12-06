@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:shadowColor="@color/black"
+        android:layout_marginBottom="470dp"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        tools:text="name"/>
+
+    <TextView
+        android:id="@+id/priceLevel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:shadowColor="@color/black"
+        android:layout_marginBottom="300dp"
+        android:layout_marginRight="170dp"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        tools:text="$"/>
+
+    <TextView
+        android:id="@+id/distanceAway"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="300dp"
+        android:layout_marginLeft="170dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        tools:text="miles away"/>
+
+    <TextView
+        android:id="@+id/ratings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:shadowColor="@color/black"
+        android:layout_marginBottom="170dp"
+        android:layout_marginRight="170dp"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        tools:text="rating"/>
+
+    <TextView
+        android:id="@+id/numRatings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="170dp"
+        android:layout_marginLeft="170dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        tools:text="number ratings"/>
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="45dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        tools:text="category"/>
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="310dp"
+        android:src="@drawable/common_google_signin_btn_icon_dark" />
+
+    <Button
+        android:id="@+id/submitRestaurant"
+        android:layout_marginTop="475dp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="150dp"
+        android:text="Find">
+    </Button>
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="-500dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        tools:text="address"/>
+
+</RelativeLayout>

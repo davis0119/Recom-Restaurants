@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">restaurants</string>
     <string name="title_activity_maps">Map</string>
+    <string name="map">Map</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="address">0 Kewalo Street</string>
+    <string name="rating">0</string>
+    <string name="numRates">0</string>
+    <string name="price">$</string>
+    <string name="category">Dinner</string>
+    <string name="lookingFor">What are you looking for?</string>
+    <string name="mileNum">0</string>
+    <string name="milePlace">Mile Radius</string>
+    <string name="prices">How many $?</string>
+    <string name="distance">0</string>
+    <string name="favs">Favorites</string>
+    <string name="search">Search</string>
     <string name="google_maps_key">AIzaSyBJMIpvRHhQcFvDiufk50p4RLu2PWvaN34</string>
 </resources>
