@@ -2,6 +2,9 @@ package com.example.restaurants
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -13,9 +16,22 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this, SearchActivity::class.java)
             startActivity(i)
         }
-        map.setOnClickListener {
-            val i = Intent(this, MapsActivity::class.java)
-            startActivity(i)
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // which menu item u picking
+        when (item.itemId) {
+            R.id.main_menu -> {
+                Toast.makeText(this,
+                    "You're already here, stop playing around.",
+                    Toast.LENGTH_SHORT).show()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 }

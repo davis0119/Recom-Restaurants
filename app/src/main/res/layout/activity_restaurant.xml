@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient_button"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:shadowColor="@color/black"
@@ -101,16 +102,18 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginLeft="128dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="320dp"
         android:src="@drawable/common_google_signin_btn_icon_dark" />
 
     <Button
         android:id="@+id/submitRestaurant"
-        android:layout_marginTop="475dp"
+        android:layout_marginTop="485dp"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="150dp"
-        android:text="Find">
+        android:textSize="15dp"
+        android:background="@drawable/gradient_button"
+        android:text="@string/pinpoint">
     </Button>
 
     <TextView
@@ -118,7 +121,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_marginBottom="-500dp"
+        android:layout_marginBottom="-510dp"
         android:textSize="25sp"
         android:textStyle="bold"
         android:shadowColor="@color/black"

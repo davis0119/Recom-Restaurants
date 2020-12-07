@@ -2,6 +2,8 @@ package com.example.restaurants
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_restaurant.*
@@ -33,6 +35,23 @@ class RestaurantActivity : AppCompatActivity() {
             i.putExtra("latitude", intent.getDoubleExtra("latitude", 0.0))
             i.putExtra("longitude", intent.getDoubleExtra("longitude", 0.0))
             startActivity(i)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // which menu item u picking
+        when (item.itemId) {
+            R.id.main_menu -> {
+                val it = Intent(this, MainActivity::class.java)
+                startActivity(it)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 

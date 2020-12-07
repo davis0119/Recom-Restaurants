@@ -1,11 +1,14 @@
 package com.example.restaurants
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.common.api.Status
@@ -35,26 +38,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         mapFragment.getMapAsync(this)
         // Initialize Places
         Places.initialize(getApplicationContext(), getString(R.string.google_maps_key))
-
-        // Create a new Places client instance.
-        val placesClient = Places.createClient(this)
-        // Initialize the AutocompleteSupportFragment.
-//        val autocompleteFragment = supportFragmentManager.findFragmentById(R.id.search_text) as AutocompleteSupportFragment?
-//
-//        // Specify the types of place data to return.
-//        autocompleteFragment!!.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME))
-//
-//        // Set up a PlaceSelectionListener to handle the response.
-//        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
-//            override fun onPlaceSelected(place: Place) {
-//                // TODO: Get info about the selected place.
-//                Log.i("autocomplete fragment", "Place: " + place.name + ", " + place.id)
-//            }
-//
-//            override fun onError(p0: Status) {
-//                TODO("Not yet implemented")
-//            }
-//        })
     }
 
     /**
@@ -103,6 +86,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // which menu item u picking
+        when (item.itemId) {
+            R.id.main_menu -> {
+                val it = Intent(this, MainActivity::class.java)
+                startActivity(it)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
 }

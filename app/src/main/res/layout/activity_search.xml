@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchActivity"
+    android:background="@drawable/gradient_button"
     android:orientation="vertical">
 
     <EditText
@@ -22,41 +23,110 @@
         android:shadowDy="1.3"
         android:shadowRadius="1.6" />
 
-    <EditText
-        android:id="@+id/pref_mile"
-        android:layout_width="fill_parent"
-        android:layout_height="120dp"
-        android:hint="@string/milePlace"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:shadowColor="@color/white"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/pref_price"
-        android:layout_width="fill_parent"
-        android:layout_height="120dp"
-        android:hint="@string/prices"
-        android:gravity="center"
-        android:textSize="32dp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:shadowColor="@color/white"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="1.6"/>
+        <TextView
+            android:id="@+id/pref_mile"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:text="@string/milePlace"
+            android:gravity="center"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:shadowColor="@color/white"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/inc_miles"
+                android:textSize="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="@string/add"
+                android:background="@drawable/gradient_button">
+            </Button>
+            <Button
+                android:id="@+id/dec_miles"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/minus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/gradient_button">
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/pref_price"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:text="@string/prices"
+            android:gravity="center"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            android:shadowColor="@color/white"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/inc_price"
+                android:textSize="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="@string/add"
+                android:background="@drawable/gradient_button">
+            </Button>
+            <Button
+                android:id="@+id/dec_price"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="@string/minus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/gradient_button">
+            </Button>
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:id="@+id/done"
         android:text="@string/search"
         android:textSize="22dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/gradient_button"
         android:layout_marginHorizontal="135dp">
     </Button>
 
