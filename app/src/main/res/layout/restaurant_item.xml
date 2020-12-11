@@ -22,14 +22,6 @@
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
     <TextView
-        android:id="@+id/restDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="310dp"
-        android:text="@string/distance" />
-
-    <TextView
         android:id="@+id/restAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,11 +47,19 @@
         android:text="@string/numRates" />
 
     <TextView
+        android:id="@+id/restDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="340dp"
+        android:text="@string/distance" />
+
+    <TextView
         android:id="@+id/restPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="310dp"
+        android:layout_marginLeft="340dp"
         android:text="@string/price" />
 
     <TextView
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="310dp"
+        android:layout_marginLeft="340dp"
         android:text="@string/category" />
 
 </RelativeLayout>

@@ -6,13 +6,10 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.google.android.gms.common.api.Status
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,10 +17,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
-import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener{
 
@@ -32,12 +25,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
+        // music
+        Audio.playAudio(this, R.raw.lilycove_city)
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         // Initialize Places
-        Places.initialize(getApplicationContext(), getString(R.string.google_maps_key))
+        Places.initialize(applicationContext, getString(R.string.google_maps_key))
     }
 
     /**
@@ -57,17 +54,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         mMap.setOnMyLocationButtonClickListener(this)
         mMap.setOnMyLocationClickListener(this)
         val name = intent.getStringExtra("name")
+        val address = intent.getStringExtra("address")
         val lat = intent.getDoubleExtra("latitude", 0.0)
         val long = intent.getDoubleExtra("longitude", 0.0)
         // Add a marker to the searched restaurant and move the camera
         val restaurant = LatLng(lat, long)
-        mMap.addMarker(MarkerOptions().position(restaurant).title(name))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(restaurant))
+        mMap.addMarker(MarkerOptions().position(restaurant).title("$name - $address"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(restaurant, 9f))
     }
 
     private fun setUpMap() {
         if (ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 123
@@ -95,14 +94,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // which menu item u picking
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.main_menu -> {
+                Audio.pauseAudio()
                 val it = Intent(this, MainActivity::class.java)
                 startActivity(it)
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            R.id.search -> {
+                Audio.pauseAudio()
+                val it = Intent(this, SearchActivity::class.java)
+                startActivity(it)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
-
 }

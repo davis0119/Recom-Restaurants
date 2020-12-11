@@ -1,19 +1,20 @@
 package com.example.restaurants
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_restaurant.*
-import kotlinx.android.synthetic.main.restaurant_item.view.*
 
 class RestaurantActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant)
+
         if (intent.getStringExtra("name")!!.length > 37) {
             name.text = intent.getStringExtra("name")?.substring(0, 37) + "..."
         } else {
@@ -30,8 +31,10 @@ class RestaurantActivity : AppCompatActivity() {
             .centerCrop().resize(150, 150) // crop to fit image view
             .into(picture) // inject that thing!
         submitRestaurant.setOnClickListener {
+            Audio.pauseAudio()
             val i = Intent(this, MapsActivity::class.java)
             i.putExtra("name", intent.getStringExtra("name"))
+            i.putExtra("address", intent.getStringExtra("location"))
             i.putExtra("latitude", intent.getDoubleExtra("latitude", 0.0))
             i.putExtra("longitude", intent.getDoubleExtra("longitude", 0.0))
             startActivity(i)
@@ -45,13 +48,20 @@ class RestaurantActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // which menu item u picking
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.main_menu -> {
+                Audio.pauseAudio()
                 val it = Intent(this, MainActivity::class.java)
                 startActivity(it)
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            R.id.search -> {
+                Audio.pauseAudio()
+                val it = Intent(this, SearchActivity::class.java)
+                startActivity(it)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

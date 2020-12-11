@@ -4,23 +4,20 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_result.*
-import kotlinx.android.synthetic.main.activity_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.math.roundToInt
 
 class ResultsActivity : AppCompatActivity() {
     // api key
@@ -34,6 +31,9 @@ class ResultsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+
+        // music
+        Audio.playAudio(this, R.raw.petalburg_city)
 
         // received from intent
         val searchTerm = intent.getStringExtra("foodSearch")
@@ -51,7 +51,7 @@ class ResultsActivity : AppCompatActivity() {
                 intent.putExtra("rating", restaurants[position].rating.toString())
                 intent.putExtra("price", restaurants[position].price)
                 intent.putExtra("distance",
-                    (Math.round(restaurants[position].distance/ 1610 * 10.0) /
+                    ((restaurants[position].distance / 1610 * 10.0).roundToInt() /
                             10.0).toString() + " miles")
                 intent.putExtra("review_count",
                     restaurants[position].num_reviews.toString()  + " ratings")
@@ -138,14 +138,10 @@ class ResultsActivity : AppCompatActivity() {
         hasGps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
         if (hasGps) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                5000, 0F,
-                object : LocationListener {
-                    override fun onLocationChanged(p0: Location) {
-                        if (p0 != null) {
-                            locationGps = p0
-                        }
-                    }
-                })
+                5000, 0F
+            ) { p0 ->
+                locationGps = p0
+            }
         }
         val localGpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         if (localGpsLocation != null) {
@@ -159,13 +155,20 @@ class ResultsActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // which menu item u picking
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.main_menu -> {
+                Audio.pauseAudio()
                 val it = Intent(this, MainActivity::class.java)
                 startActivity(it)
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            R.id.search -> {
+                Audio.pauseAudio()
+                val it = Intent(this, SearchActivity::class.java)
+                startActivity(it)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

@@ -1,13 +1,14 @@
 package com.example.restaurants
 
+import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.restaurant_item.view.*
+import kotlin.math.roundToInt
 
 class YelpAdapter (
     private val activity : Activity,
@@ -16,6 +17,7 @@ class YelpAdapter (
     RecyclerView.Adapter<YelpAdapter.RestaurantViewHolder>() {
 
     inner class RestaurantViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+        @SuppressLint("SetTextI18n")
         fun bind(restaurant : Restaurant, position: Int, getPosition: (Int) -> Unit) {
             if (restaurant.name.length > 30) {
                 itemView.restName.text = restaurant.name.subSequence(0, 30).toString() + "..."
@@ -25,7 +27,7 @@ class YelpAdapter (
             itemView.restAddress.text = restaurant.location.address
             itemView.restRating.text = restaurant.rating.toString() + " / 5.0 Stars |"
             itemView.restDistance.text =
-                (Math.round(restaurant.distance / 1610 * 10.0) / 10.0).toString() + " miles"
+                ((restaurant.distance / 1610 * 10.0).roundToInt() / 10.0).toString() + " miles"
             itemView.restNumRatings.text = restaurant.num_reviews.toString() + " ratings"
             itemView.restPrice.text = restaurant.price
             itemView.restCategory.text = restaurant.categories[0].title

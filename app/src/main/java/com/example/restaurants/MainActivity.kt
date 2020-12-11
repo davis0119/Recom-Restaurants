@@ -9,9 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // music
+        Audio.playAudio(this, R.raw.littleroot_town)
+
         search.setOnClickListener {
             val i = Intent(this, SearchActivity::class.java)
             startActivity(i)
@@ -24,14 +28,20 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // which menu item u picking
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.main_menu -> {
                 Toast.makeText(this,
                     "You're already here, stop playing around.",
                     Toast.LENGTH_SHORT).show()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            R.id.search -> {
+                Audio.pauseAudio()
+                val it = Intent(this, SearchActivity::class.java)
+                startActivity(it)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
