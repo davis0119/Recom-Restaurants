@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">restaurants</string>
+    <string name="google_maps_key">AIzaSyBJMIpvRHhQcFvDiufk50p4RLu2PWvaN34</string>
     <string name="title_activity_maps">Map</string>
     <string name="map">Map</string>
     <string name="restaurant">Restaurant</string>
@@ -22,5 +23,4 @@
     <string name="minus">-</string>
     <string name="favs">Favorites</string>
     <string name="search">Search</string>
-    <string name="google_maps_key">AIzaSyBJMIpvRHhQcFvDiufk50p4RLu2PWvaN34</string>
 </resources>
